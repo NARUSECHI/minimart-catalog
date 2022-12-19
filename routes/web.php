@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SectionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Auth::routes();
+
+Route::group(['middleware' => 'auth'],function(){
+    //Home
+    Route::get('/',[HomeController::class,'index'])->name('index;');
+
+    //Section
+    Route::get('/section',[SectionController::class,'index'])->name('section.index');
+    Route::post('/section/create',[SectionController::class,'create'])->name('section.create');
+    Route::delete('/section/{id}/destroy',[SectionController::class,'destroy'])->name('section.destroy');
 });
