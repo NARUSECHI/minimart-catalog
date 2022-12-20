@@ -72,4 +72,10 @@ class ProductController extends Controller
         $product->save();
         return redirect()->route('index');
     }
+
+    public function destroy($id)
+    {
+        $this->product->destroy($id);
+        return redirect()->back();        
+    }
 }

@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="col ps-0">
                                     <input type="number" name="price" id="price"
-                                        class="form-control rounded-0 rounded-end" value="{{ old('price')}}">
+                                        class="form-control rounded-0 rounded-end" value="{{ old('price')}}" step="0.01">
                                 </div>
                             </div>
                             <div class="my-1">

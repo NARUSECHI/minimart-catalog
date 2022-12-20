@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('name',50);
             $table->string('description');
             $table->decimal('price',5,2)->unsigned(); //when add external key to certain column, use unsigned
+            $table->string('image',50);
             $table->timestamps();
 
             $table->foreign('section_id')->references('id')->on('sections');

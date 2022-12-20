@@ -37,7 +37,10 @@
                         <td>
                             <a href="{{ route('edit',$product->id) }}" class="btn btn-secondary"><i class="fa-solid fa-pen"></i></a>
                         </td>
-                        <td><button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-product-{{$product->id}}"><i class="fa-solid fa-trash-can"></i></button></td>
+                        <td>
+                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-product-{{$product->id}}"><i class="fa-solid fa-trash-can"></i></button>
+                            @include('products.modal.delete')
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
