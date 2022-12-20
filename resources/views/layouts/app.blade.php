@@ -37,7 +37,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a href="#" class="text-decoration-none">
+                            <a href="{{route('index')}}" class="text-decoration-none">
                                 <h1 class="nav-link mb-0">Products</h1>
                             </a>
                         </li>
