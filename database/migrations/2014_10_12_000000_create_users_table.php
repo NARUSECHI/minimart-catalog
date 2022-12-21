@@ -18,6 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('name',50);
             $table->string('email',255)->unique();
             $table->string('password',255);
+            $table->string('image')->nullable();
+            $table->integer('how_long')->nullable();
+            $table->integer('role_id')
+                ->default(2)
+                ->comment('1:admin 2:general');
             $table->timestamps();
         });
     }

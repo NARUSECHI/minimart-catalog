@@ -6,8 +6,8 @@
 <div class="row justify-content-center">
     <div class="col-10">
         <div class="row mt-3">
-            <div class="col">
-                <h1>Products</h1>
+            <div class="col-auto">
+                <h1>Result:{{$search}}</h1>
             </div>
             <div class="col-auto ms-auto">
                 <a href="{{ route('create') }}" class="btn btn-success text-white form-control">
@@ -15,21 +15,19 @@
                 </a>
             </div>
         </div>
-            <div class="d-flex justify-content-center">
-                <div class="col-6">
-                    <form action="{{ route('search') }}" method="post">
-                        @csrf
-                        <div class="row my-4 gx-2">
-                            <div class="col"><input type="search" name="search" id="search" class="form-control"></div>
-                            <div class="col-auto"><button type="submit" class="btn btn-primary form-control">Search</button></div>
-                        </div>      
-                    </form>
-                </div>  
-            </div>
-                   
 
-        <table class="table table-sm text-center align-middle mt-3">
-            <thead class="table-success table-bordered border-dark">
+        <div class="my-4">
+            <div class="row">
+                <form action="{{ route('search') }}" method="post">
+                    @csrf
+                    <div class="col-6"><input type="search" name="search" id="search" class="form-control"></div>
+                    <div class="col-2"><button type="submit" class="btn btn-primary form-control">Search</button></div>      
+                </form>         
+            </div>
+        </div>
+
+        <table class="table table-success align-text-center mt-3">
+            <thead>
                 <td>ID</td>
                 <td>NAME</td>
                 <td>IMAGE</td>
@@ -37,9 +35,10 @@
                 <td>PRICE</td>
                 <td>SECTION</td>
                 <td></td>
+                <td></td>
             </thead>
             <tbody>
-                @foreach ($all_products as $product)
+                @foreach ($products as $product)
                     <tr>
                         <td>{{$product->id}}</td>
                         <th>{{$product->name}}</th>
@@ -54,8 +53,10 @@
                         <td>{{$product->price}}</td>
                         <td>{{$product->section->name}}</td>
                         <td>
-                            <a href="{{ route('edit',$product->id) }}" class="btn btn-outline-secondary border-0"><i class="fa-solid fa-pen"></i></a>
-                            <button class="btn btn-outline-danger border-0" data-bs-toggle="modal" data-bs-target="#delete-product-{{$product->id}}"><i class="fa-solid fa-trash-can"></i></button>
+                            <a href="{{ route('edit',$product->id) }}" class="btn btn-secondary"><i class="fa-solid fa-pen"></i></a>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-product-{{$product->id}}"><i class="fa-solid fa-trash-can"></i></button>
                             @include('products.modal.delete')
                         </td>
                     </tr>

@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col-10">
-                    <form action="{{ route('update',$product->id) }}" method="post">
+                    <form action="{{ route('update',$product->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
 
@@ -21,6 +21,16 @@
                         </div>
                         <div class="my-1">
                             @error('name')
+                                <p class="text-danger">{{$message}}</p>                                
+                            @enderror
+                        </div>
+                        <div class="my-1">
+                            <label for="image">Image</label>
+                            <input type="file" name="image" id="image" class="form-control">
+                        </div>
+                        
+                        <div class="my-1">
+                            @error('image')
                                 <p class="text-danger">{{$message}}</p>                                
                             @enderror
                         </div>

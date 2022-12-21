@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\UsersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,8 +29,14 @@ Route::group(['middleware' => 'auth'],function(){
     Route::get('/product/{id}/edit',[ProductController::class,'edit'])->name('edit');
     Route::patch('/product/{id}/update',[ProductController::class,'update'])->name('update');
     Route::delete('/product/{id}/delete',[ProductController::class,'destroy'])->name('destroy');
+    Route::post('/product/search',[ProductController::class,'search'])->name('search');
     //Section
     Route::get('/section',[SectionController::class,'index'])->name('section.index');
     Route::post('/section/create',[SectionController::class,'create'])->name('section.create');
     Route::delete('/section/{id}/destroy',[SectionController::class,'destroy'])->name('section.destroy');
+
+    //Admin
+    Route::group(['prefix'=>'admin','as'=>'admin.'],function(){
+        Route::get('/',[UsersController::class,'index'])->name('index');
+    });
 });

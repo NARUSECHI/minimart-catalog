@@ -23,11 +23,11 @@ class SectionController extends Controller
     public function create(Request $request)
     {
         $request->validate([
-            'section'=>'required|min:1|max:50'
+            'name'=>'required|min:1|max:50'
         ]);
 
         $section = $this->section;
-        $section->name = $request->section;
+        $section->name = $request->name;
         $section->save();
         return redirect()->back();
     }
