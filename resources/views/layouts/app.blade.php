@@ -77,7 +77,7 @@
                                         Admin
                                     </a>
 
-                                    <a href="#" class="dropdown-item">
+                                    <a href="{{ route('profile.index',Auth::user()->id) }}" class="dropdown-item">
                                         Profile
                                     </a>
                                     

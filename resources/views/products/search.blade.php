@@ -21,7 +21,7 @@
                 <form action="{{ route('search') }}" method="post">
                     @csrf
                     <div class="col-6"><input type="search" name="search" id="search" class="form-control"></div>
-                    <div class="col-2"><button type="submit" class="btn btn-primary form-control">Search</button></div>      
+                    <div class="col-2"><button type="submit" class="btn btn-outline-success form-control">Search</button></div>      
                 </form>         
             </div>
         </div>

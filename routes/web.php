@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UsersController;
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,11 @@ Route::group(['middleware' => 'auth'],function(){
     Route::get('/section',[SectionController::class,'index'])->name('section.index');
     Route::post('/section/create',[SectionController::class,'create'])->name('section.create');
     Route::delete('/section/{id}/destroy',[SectionController::class,'destroy'])->name('section.destroy');
-
+    //Profile
+    Route::get('/profile/{id}',[ProfileController::class,'index'])->name('profile.index');
+    Route::get('/profile/{id}/edit',[ProfileController::class,'edit'])->name('profile.edit');
+    Route::patch('/profile/{id}/update',[ProfileController::class,'update'])->name('profile.update');
+    Route::delete('/profile/{id}/destroy',[ProfileController::class,'destroy'])->name('profile.destroy');
     //Admin
     Route::group(['prefix'=>'admin','as'=>'admin.'],function(){
         Route::get('/',[UsersController::class,'index'])->name('index');
