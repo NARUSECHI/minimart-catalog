@@ -9,25 +9,26 @@
             <div class="col">
                 <h1>Products</h1>
             </div>
-            <div class="col-auto ms-auto">
+        </div>
+        <div class="row mt-4">
+            <div class="col-auto px-5">
                 <a href="{{ route('create') }}" class="btn btn-success text-white form-control">
                     <i class="fa-solid fa-plus"></i> New Product
                 </a>
             </div>
+            <div class="col-5 ms-auto">
+                <form action="{{ route('search') }}" method="post">
+                    @csrf
+                    <div class="row gx-2">
+                        <div class="col"><input type="search" name="search" id="search" class="form-control" autofocus></div>
+                        <div class="col-auto"><button type="submit" class="btn btn-outline-success form-control">Search</button></div>
+                    </div>      
+                </form>
+            </div>  
         </div>
-            <div class="d-flex justify-content-center">
-                <div class="col-6">
-                    <form action="{{ route('search') }}" method="post">
-                        @csrf
-                        <div class="row my-4 gx-2">
-                            <div class="col"><input type="search" name="search" id="search" class="form-control" autofocus></div>
-                            <div class="col-auto"><button type="submit" class="btn btn-outline-success form-control">Search</button></div>
-                        </div>      
-                    </form>
-                </div>  
-            </div>
-                   
 
+                   
+    <div class="d-flex justify-content-center">
         <table class="table table-sm text-center align-middle mt-3">
             <thead class="table-success table-bordered border-dark">
                 <td>ID</td>
@@ -61,5 +62,6 @@
                     </tr>
                 @endforeach
             </tbody>
-        </table>    
+        </table>   
+    </div> 
 @endsection

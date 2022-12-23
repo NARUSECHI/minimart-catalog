@@ -1,18 +1,19 @@
-<div class="modal fade" id="delete-user-{{$user->id}}">
+<div class="modal fade" id="deactivate-user-{{$user->id}}">
     <div class="modal-dialog">
         <div class="modal-content border border-danger">
             <div class="modal-header border-0 border-bottom border-danger">
-                <h4 class="text-danger">Delete User</h4>
+                <h4 class="text-danger">Deactivate User</h4>
             </div>
             <div class="modal-body">
-                <h6 class="text-danger fw-bold">Are you sure Delete your accont?</h6> 
+                <h6 class="text-danger fw-bold text-start">Are you sure Deactivate your accont?</h6> 
                 <div class="mt-1">
                     <div class="row">
-                        <div class="col">
+                        <div class="col text-start">
                             <span>Name: {{$user->name}}</span><br>
                             <span>Working Duration: {{$user->how_long}}year</span><br>
                             <span>
-                                Role:   @if ($user->roke_id===1)
+                                Role:   
+                                    @if ($user->roke_id===1)
                                         Admin</h3>
                                     @else
                                         General</h3>
@@ -20,8 +21,11 @@
                             </span>
                         </div>
                         <div class="col d-flex justify-content-center">
-                            <img src="{{asset('storage/user/'.$user->image)}}" alt="{{$user->image}}" class="img-mid">
-                        </div>
+                            @if ($user->image)
+                                <img src="{{asset('storage/user/'.$user->image)}}" alt="{{$user->image}}" class="img-mid">
+                            @else
+                                <img src="{{asset('storage/no_picture.jpg')}}" alt="No Image" class="img-mid">
+                            @endif
                     </div>
                     
                     
@@ -35,11 +39,11 @@
                         </button>
                     </div>
                     <div class="col-auto">
-                        <form action="{{route('profile.f-destroy',Auth::user()->id)}}" method="post">
+                        <form action="{{route('admin.deactivate',$user->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger text-white" class="form-control">
-                                Delete
+                                Deactivate
                             </button>
                         </form>
                     </div>

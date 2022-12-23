@@ -74,11 +74,9 @@ class ProfileController extends Controller
     {
         $user = $this->user->findOrFail($id);
         $this->deleteImage($user->image);
-        $this->user->destroy($id);
+        $user->forcedelete();
         Auth::logout();
         return redirect()->route('index');
-    }
-
-  
+    }  
 
 }

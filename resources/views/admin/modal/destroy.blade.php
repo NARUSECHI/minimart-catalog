@@ -35,7 +35,7 @@
                         </button>
                     </div>
                     <div class="col-auto">
-                        <form action="{{route('profile.destroy',Auth::user()->id)}}" method="post">
+                        <form action="{{route('admin.destroy',Auth::user()->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger text-white" class="form-control">

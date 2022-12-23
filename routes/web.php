@@ -43,5 +43,8 @@ Route::group(['middleware' => 'auth'],function(){
     //Admin
     Route::group(['prefix'=>'admin','as'=>'admin.'],function(){
         Route::get('/',[UsersController::class,'index'])->name('index');
+        Route::delete('/{id}/deactivate',[UsersController::class,'deactivate'])->name('deactivate');
+        Route::patch('/{id}/activate',[UsersController::class,'activate'])->name('activate');
+        Route::delete('/{id}/destroy',[UsersController::class,'destroy'])->name('destroy');
     });
 });

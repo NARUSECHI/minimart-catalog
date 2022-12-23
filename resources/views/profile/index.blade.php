@@ -30,6 +30,11 @@
                     @endif
                 </div>
                 <div class="row mt-5 mb-2">
+                    @if (Auth::user()->id === $user->id)
+                    <div class="col">
+                        <a href="{{ route('profile.edit',Auth::user()->id)}}" class="btn btn-success form-control">Edit</a>
+                    </div>             
+                    @endif
                 </div>
             </div>
         </div>
